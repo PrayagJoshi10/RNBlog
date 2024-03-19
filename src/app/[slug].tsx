@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useLocalSearchParams } from "expo-router";
 import { getAllPosts, getPost } from "../repository/postRepository";
 import Markdown from "react-native-markdown-display";
+import Head from "expo-router/head";
 
 interface Props {}
 
@@ -24,15 +25,19 @@ const PostDetailsScreen = (props: Props) => {
   }
 
   return (
-    // <View style={styles.container}>
-    <ScrollView
-      style={styles.container}
-      contentContainerStyle={styles.contentContainer}
-    >
-      <Text style={styles.title}>{post.title}</Text>
-      <Markdown>{post.content}</Markdown>
-    </ScrollView>
-    // </View>
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.description} />
+      </Head>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+      >
+        <Text style={styles.title}>{post.title}</Text>
+        <Markdown>{post.content}</Markdown>
+      </ScrollView>
+    </>
   );
 };
 

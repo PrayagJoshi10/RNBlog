@@ -2,26 +2,33 @@ import { useState } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { getAllPosts } from "../repository/postRepository";
 import { Link } from "expo-router";
+import Head from "expo-router/head";
 
 export default function Page() {
   const [posts, setPosts] = useState(getAllPosts());
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        <FlatList
-          data={posts}
-          contentContainerStyle={{ gap: 20 }}
-          renderItem={({ item }) => (
-            <Link
-              href={`/${item.slug}`}
-              style={{ fontSize: 16, fontWeight: "500" }}
-            >
-              {item.title}
-            </Link>
-          )}
-        />
+    <>
+      <Head>
+        <title>Blog Home</title>
+        <meta name="description" content="This is home screen for my blog" />
+      </Head>
+      <View style={styles.container}>
+        <View style={styles.main}>
+          <FlatList
+            data={posts}
+            contentContainerStyle={{ gap: 20 }}
+            renderItem={({ item }) => (
+              <Link
+                href={`/${item.slug}`}
+                style={{ fontSize: 16, fontWeight: "500" }}
+              >
+                {item.title}
+              </Link>
+            )}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
