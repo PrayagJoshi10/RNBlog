@@ -86,7 +86,7 @@ as well as liquid reeds. Not in the evening, but with a living tree and a great 
 the orders of the void Aurora, to go *in color in*. The leader and the tongue lowers the right hand: when to bear
 you can only call
 `,
-  thumbnail: "",
+  thumbnail: "post1.png",
 };
 
 export default post;

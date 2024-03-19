@@ -52,7 +52,7 @@ const post: Post = {
   You will use the fir tree, close, let it escape from the waves you are doing. We have a flight, goddess in
   Menoeten, the Earth has leveled the sad, bury the father.
   `,
-  thumbnail: "",
+  thumbnail: "post2.png",
 };
 
 export default post;

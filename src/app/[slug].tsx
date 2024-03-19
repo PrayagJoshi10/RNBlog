@@ -1,9 +1,10 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import React, { useState } from "react";
 import { Link, useLocalSearchParams } from "expo-router";
 import { getAllPosts, getPost } from "../repository/postRepository";
 import Markdown from "react-native-markdown-display";
 import Head from "expo-router/head";
+import { ORIGIN } from "../config";
 
 interface Props {}
 
@@ -29,12 +30,22 @@ const PostDetailsScreen = (props: Props) => {
       <Head>
         <title>{post.title}</title>
         <meta name="description" content={post.description} />
+        <meta
+          property="og:image"
+          content={`${ORIGIN}/thumbnails/${post.thumbnail}`}
+        />
       </Head>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}
       >
         <Text style={styles.title}>{post.title}</Text>
+        <Image
+          source={{ uri: `${ORIGIN}/thumbnails/${post.thumbnail}` }}
+          style={styles.thumbnail}
+          alt={post.title}
+        />
+
         <Markdown>{post.content}</Markdown>
       </ScrollView>
     </>
@@ -56,6 +67,11 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 30,
+    marginBottom: 20,
+  },
+  thumbnail: {
+    width: "100%",
+    aspectRatio: 16 / 9,
     marginBottom: 20,
   },
 });
